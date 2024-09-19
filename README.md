@@ -14,9 +14,8 @@ On a retail website, the following discounts apply:
 
 Write a program in a Java – Spring boot with test cases such that given a bill, it finds the net payable amount.
 
-**Features**
-
 **Getting Started**
+
 **Prerequisites**
 
 1) Spring Tools Suite or eclipse
