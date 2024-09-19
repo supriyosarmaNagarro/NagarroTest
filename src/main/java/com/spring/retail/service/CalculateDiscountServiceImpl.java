@@ -32,12 +32,12 @@ public class CalculateDiscountServiceImpl implements CalculateDiscountService {
 		        
 		        userBasedDiscount = utility.getUserDiscount(user);            // get user category wise discount percentage
 		        
-		        billBasedDiscount = utility.calculateBillDiscount(totalAmount, 
-		        		new BigDecimal(100), new BigDecimal(5));                    // calculate bill based discount
-				
 		        if (nonGroceryAmount.compareTo(BigDecimal.ZERO) > 0) {
 		        	nonGroceryFinalAmount = utility.calculateDiscount(nonGroceryAmount, userBasedDiscount); //calculate non grocery final amount by subtracting user based discount
 				}
+		        
+		        billBasedDiscount = utility.calculateBillDiscount(totalAmount, 
+		        		new BigDecimal(100), new BigDecimal(5));                    // calculate bill based discount
 
 		        finalAmount = (groceryAmount.add(nonGroceryFinalAmount).subtract(billBasedDiscount)); //add grocery, non grocery and subtract bill based discount
 				

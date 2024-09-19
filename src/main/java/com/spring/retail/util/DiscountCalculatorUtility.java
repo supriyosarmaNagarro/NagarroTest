@@ -87,8 +87,19 @@ public class DiscountCalculatorUtility {
     }
 
     public boolean isCustomerSince(LocalDate registeredDate, long years) {
-        Period period = Period.between(registeredDate, LocalDate.now());
-        return period.getYears() >= years;
+    	
+    	boolean isCustomer = false;
+    	
+    	try {
+    		
+            Period period = Period.between(registeredDate, LocalDate.now());
+            isCustomer = period.getYears() >= years;
+            
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+
+    	return isCustomer;
     }
 
     public BigDecimal calculateBillDiscount(BigDecimal totalAmount, BigDecimal amount, BigDecimal discountAmount) {
@@ -109,8 +120,17 @@ public class DiscountCalculatorUtility {
 
     public BigDecimal calculateDiscount(BigDecimal amount, BigDecimal discount) {
 
-        BigDecimal x = amount.multiply(discount);
-        return amount.subtract(x);
+    	BigDecimal amt = new BigDecimal(0);
+    	
+    	try {
+    		
+            BigDecimal x = amount.multiply(discount);
+            amt = amount.subtract(x);
+            
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+        return amt;
     }
 
 }
