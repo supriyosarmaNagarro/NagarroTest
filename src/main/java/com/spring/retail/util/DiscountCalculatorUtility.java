@@ -149,7 +149,7 @@ public class DiscountCalculatorUtility {
     public List<Product> getUpdatedproductList(List<Product> products){
     	
     	return products.stream().map(p -> {
-			ProductCategoryWise productCategories = new ProductCategoryWise();
+			ProductCategoryUtility productCategories = new ProductCategoryUtility();
 			p.setProductCategory(productCategories.getProductAndCategory().get(p.getProductName()));
 			return p;
 		}).collect(Collectors.toList());

@@ -49,6 +49,7 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 8) Get the product categories for each item from the utility class ProductCategoryWise. For this use the updatedProductsList method in the utility class. Most of the complex calculation logic is hidden from the service class. This is attributable to the use of Facade design pattern.
 9) After that the getPayableAmount method internally calls the utility methods defined in the utility class DiscountCalculatorUtility to carry out operations such as calculating the total amount, grocery based amount, non grocery based amount, user based discounts, bill based discounts etc.
 10) Use Spring bean annotations such as @RestController, @Service etc for automatic maintenance of beans by Spring IOC container.
+11) For production, implement cross cutting concerns like Logging, exception handling etc.
 
 **Project Structure**
 

@@ -4,11 +4,11 @@ import java.util.HashMap;
 
 import com.spring.retail.pojo.ProductCategory;
 
-public class ProductCategoryWise {
+public class ProductCategoryUtility {
 	
 	private HashMap<String, ProductCategory> productAndCategory;
 
-	public ProductCategoryWise() {
+	public ProductCategoryUtility() {
 		super();
 		this.productAndCategory = new HashMap<>();
 		setProductAndCategory(productAndCategory);
