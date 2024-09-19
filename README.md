@@ -1,8 +1,8 @@
-#Project
+**Project**
 
 This repository contains the Spring Boot based project for calculating the discounts on a retail website based on a set of given conditions.
 
-##Project Description
+**Project Description**
 
 On a retail website, the following discounts apply:
 1.	If the user is an employee of the store, he gets a 30% discount
