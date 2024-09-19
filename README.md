@@ -1,0 +1,3 @@
+RestController - CalculatePaymentController --> consists of the API method fetchPayableAmount which returns the final payable amount after calculating discounts.
+CalculateDiscountService (Interface and implementing class) - The controller calls the service method getPayableAmount in the service class to fetch the final payable amount after calculating discounts.
+DiscountCalculatorUtility - The getPayableAmount method internally calls the utility methods defined in the utility class DiscountCalculatorUtility to carry out operations such as calculating the total amount, grocery based amount, non grocery based amount, user based discounts etc.
