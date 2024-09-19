@@ -1,9 +1,7 @@
 package com.spring.retail.service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,7 @@ import com.spring.retail.pojo.Product;
 import com.spring.retail.pojo.ProductCategory;
 import com.spring.retail.pojo.User;
 import com.spring.retail.util.DiscountCalculatorUtility;
-import com.spring.retail.util.ProductCategoryWise;
+
 
 @Service
 public class ProductWiseDiscountService implements DiscountService {
@@ -33,13 +31,7 @@ public class ProductWiseDiscountService implements DiscountService {
 			
 			try {
 				
-				List<Product> products = bill.getProducts();
-				
-				List<Product> updatedProducts = products.stream().map(p -> {
-					ProductCategoryWise productCategories = new ProductCategoryWise();
-					p.setProductCategory(productCategories.getProductAndCategory().get(p.getProductName()));
-					return p;
-				}).collect(Collectors.toList());
+				List<Product> updatedProducts = utility.getUpdatedproductList(bill.getProducts()); //get updated product list including product category
 				
 		        totalAmount = utility.calculateTotal(updatedProducts);   //calculate total of all items
 		        

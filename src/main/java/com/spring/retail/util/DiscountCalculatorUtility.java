@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.spring.retail.pojo.Product;
 import com.spring.retail.pojo.ProductCategory;
@@ -143,6 +144,15 @@ public class DiscountCalculatorUtility {
     		e.printStackTrace();
     	}
         return discount;
+    }
+    
+    public List<Product> getUpdatedproductList(List<Product> products){
+    	
+    	return products.stream().map(p -> {
+			ProductCategoryWise productCategories = new ProductCategoryWise();
+			p.setProductCategory(productCategories.getProductAndCategory().get(p.getProductName()));
+			return p;
+		}).collect(Collectors.toList());
     }
 
 }
