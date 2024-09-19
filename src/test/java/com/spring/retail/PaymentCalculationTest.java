@@ -180,6 +180,7 @@ public class PaymentCalculationTest {
 	        BigDecimal amount = helper.calculateBillDiscount( new BigDecimal(5000), new BigDecimal(100), new BigDecimal(5));
 	        
 	        assertNotEquals(350, amount.doubleValue(), 0);
+	        
 	    }
 
 }
