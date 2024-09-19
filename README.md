@@ -1,4 +1,4 @@
-**Project**
+#Project
 
 This repository contains the Spring Boot based project for calculating the discounts on a retail website based on a set of given conditions.
 
