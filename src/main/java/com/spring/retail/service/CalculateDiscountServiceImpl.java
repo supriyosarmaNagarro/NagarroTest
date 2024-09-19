@@ -5,14 +5,14 @@ import java.math.BigDecimal;
 import com.spring.retail.pojo.Bill;
 import com.spring.retail.pojo.ItemCategory;
 import com.spring.retail.pojo.User;
-import com.spring.retail.util.DiscountUtility;
+import com.spring.retail.util.DiscountCalculatorUtility;
 
 public class CalculateDiscountServiceImpl implements CalculateDiscountService {
 
 	@Override
-	public BigDecimal getDiscount(User user, Bill bill) {
+	public BigDecimal getPayableAmount(User user, Bill bill) {
 		
-			DiscountUtility utility = new DiscountUtility();
+			DiscountCalculatorUtility utility = new DiscountCalculatorUtility();
 			BigDecimal finalAmount = new BigDecimal(0);
 			BigDecimal totalAmount = new BigDecimal(0);
 			BigDecimal groceryAmount = new BigDecimal(0);

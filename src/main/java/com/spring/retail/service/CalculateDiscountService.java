@@ -7,6 +7,6 @@ import com.spring.retail.pojo.User;
 
 public interface CalculateDiscountService {
 	
-	public BigDecimal getDiscount(User user, Bill bill);
+	public BigDecimal getPayableAmount(User user, Bill bill);
 
 }

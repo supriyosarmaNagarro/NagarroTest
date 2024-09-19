@@ -11,7 +11,7 @@ import com.spring.retail.pojo.ItemCategory;
 import com.spring.retail.pojo.User;
 import com.spring.retail.pojo.UserCategory;
 
-public class DiscountUtility {
+public class DiscountCalculatorUtility {
 	
 	private static final int YEARS_FOR_DISCOUNT = 2;
 

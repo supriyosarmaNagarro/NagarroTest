@@ -31,7 +31,7 @@ public class CalculatePaymentController {
 				
 		try {
 			
-			amount = discountService.getDiscount(request.getUser(), request.getBill());
+			amount = discountService.getPayableAmount(request.getUser(), request.getBill());
 
 		}catch(Exception e) {
 			e.printStackTrace();
