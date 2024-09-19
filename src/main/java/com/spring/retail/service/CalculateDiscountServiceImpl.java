@@ -2,11 +2,14 @@ package com.spring.retail.service;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Service;
+
 import com.spring.retail.pojo.Bill;
 import com.spring.retail.pojo.ItemCategory;
 import com.spring.retail.pojo.User;
 import com.spring.retail.util.DiscountCalculatorUtility;
 
+@Service
 public class CalculateDiscountServiceImpl implements CalculateDiscountService {
 
 	@Override
