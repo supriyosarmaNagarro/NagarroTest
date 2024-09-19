@@ -4,28 +4,28 @@ import java.util.List;
 
 public class Bill {
 	
-	private List<Item> items;
+	private List<Product> products;
 
 	public Bill() {
 		super();
 	}
 
-	public Bill(List<Item> items) {
+	public Bill(List<Product> products) {
 		super();
-		this.items = items;
+		this.products = products;
 	}
 
-	public List<Item> getItems() {
-		return items;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	@Override
 	public String toString() {
-		return "Bill [items=" + items + "]";
+		return "Bill [products=" + products + "]";
 	}
 
 }

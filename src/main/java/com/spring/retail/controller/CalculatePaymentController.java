@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.retail.dto.CalculatePaymentRequest;
-import com.spring.retail.service.CalculateDiscountService;
+import com.spring.retail.service.DiscountService;
 
 
 @RestController
 @RequestMapping("api/v1/payments")
 public class CalculatePaymentController {
 	
-	private CalculateDiscountService discountService;
+	private DiscountService discountService;
 	
 	
-	public CalculatePaymentController(CalculateDiscountService discountService) {
+	public CalculatePaymentController(DiscountService discountService) {
 		super();
 		this.discountService = discountService;
 	}

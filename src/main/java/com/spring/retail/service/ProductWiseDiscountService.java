@@ -1,21 +1,27 @@
 package com.spring.retail.service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.spring.retail.pojo.Bill;
-import com.spring.retail.pojo.ItemCategory;
+import com.spring.retail.pojo.Product;
+import com.spring.retail.pojo.ProductCategory;
 import com.spring.retail.pojo.User;
 import com.spring.retail.util.DiscountCalculatorUtility;
+import com.spring.retail.util.ProductCategoryWise;
 
 @Service
-public class CalculateDiscountServiceImpl implements CalculateDiscountService {
+public class ProductWiseDiscountService implements DiscountService {
 
 	@Override
 	public BigDecimal getPayableAmount(User user, Bill bill) {
 		
 			DiscountCalculatorUtility utility = new DiscountCalculatorUtility();
+			
 			BigDecimal finalAmount = new BigDecimal(0);
 			BigDecimal totalAmount = new BigDecimal(0);
 			BigDecimal groceryAmount = new BigDecimal(0);
@@ -24,12 +30,21 @@ public class CalculateDiscountServiceImpl implements CalculateDiscountService {
 			BigDecimal billBasedDiscount = new BigDecimal(0);
 			BigDecimal nonGroceryFinalAmount = new BigDecimal(0);
 			
+			
 			try {
 				
-		        totalAmount = utility.calculateTotal(bill.getItems());   //calculate total of all items
+				List<Product> products = bill.getProducts();
+				
+				List<Product> updatedProducts = products.stream().map(p -> {
+					ProductCategoryWise productCategories = new ProductCategoryWise();
+					p.setProductCategory(productCategories.getProductAndCategory().get(p.getProductName()));
+					return p;
+				}).collect(Collectors.toList());
+				
+		        totalAmount = utility.calculateTotal(updatedProducts);   //calculate total of all items
 		        
-		        groceryAmount = utility.calculateTotalByType(bill.getItems(), 
-		        		ItemCategory.GROCERY);                                      //calculate total of grocery items
+		        groceryAmount = utility.calculateTotalByType(updatedProducts, 
+		        		ProductCategory.GROCERY);                                      //calculate total of grocery items
 		        
 		        nonGroceryAmount = totalAmount.subtract(groceryAmount);  // calculate total of non grocery items
 		        

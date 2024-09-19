@@ -1,6 +1,6 @@
 package com.spring.retail.pojo;
 
-public enum ItemCategory {
+public enum ProductCategory {
 
 	GROCERY, ELECTRONICS, APPARELS, STATIONERY
 }

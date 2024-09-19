@@ -8,7 +8,7 @@ import com.spring.retail.pojo.Bill;
 import com.spring.retail.pojo.User;
 
 @Service
-public interface CalculateDiscountService {
+public interface DiscountService {
 	
 	public BigDecimal getPayableAmount(User user, Bill bill);
 

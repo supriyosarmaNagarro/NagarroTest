@@ -6,10 +6,11 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
-import com.spring.retail.pojo.Item;
-import com.spring.retail.pojo.ItemCategory;
+import com.spring.retail.pojo.Product;
+import com.spring.retail.pojo.ProductCategory;
 import com.spring.retail.pojo.User;
 import com.spring.retail.pojo.UserCategory;
+
 
 public class DiscountCalculatorUtility {
 	
@@ -19,8 +20,11 @@ public class DiscountCalculatorUtility {
     private static final double AFFILIATE_DISCOUNT = 0.10;
     private static final double CUSTOMER_DISCOUNT = 0.05;
 
-
-    public BigDecimal calculateTotal(List<Item> items) {
+    
+    /**
+     * method to calculate the total amount for all items
+     */
+    public BigDecimal calculateTotal(List<Product> items) {
     	
     	BigDecimal amount = new BigDecimal(0);
     	
@@ -35,7 +39,10 @@ public class DiscountCalculatorUtility {
     	return amount;
     }
 
-    public BigDecimal calculateTotalByType(List<Item> items, ItemCategory type) {
+    /**
+     * method to calculate the total amount by using item type
+     */
+    public BigDecimal calculateTotalByType(List<Product> items, ProductCategory type) {
         
     	BigDecimal sum = new BigDecimal(0);
 
@@ -43,7 +50,7 @@ public class DiscountCalculatorUtility {
     		
             if (type != null) {
             	
-                sum = items.stream().filter(item -> item.getItem().equals(type))
+                sum = items.stream().filter(item -> item.getProductCategory().equals(type))
                 		.map(item -> item.getPrice()).reduce(BigDecimal.ZERO, BigDecimal::add);
             }
             
@@ -55,6 +62,9 @@ public class DiscountCalculatorUtility {
     }
     
 
+    /**
+     * method to get the user wise discount percentage
+     */
     public BigDecimal getUserDiscount(User user) {
 
         BigDecimal discount = new BigDecimal(0);
@@ -101,6 +111,23 @@ public class DiscountCalculatorUtility {
 
     	return isCustomer;
     }
+    
+    
+    public BigDecimal calculateDiscount(BigDecimal amount, BigDecimal discountPercentage) {
+
+    	BigDecimal amt = new BigDecimal(0);
+    	
+    	try {
+    		
+            BigDecimal discount = amount.multiply(discountPercentage);
+            amt = amount.subtract(discount);
+            
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+        return amt;
+    }
+    
 
     public BigDecimal calculateBillDiscount(BigDecimal totalAmount, BigDecimal amount, BigDecimal discountAmount) {
     	
@@ -116,21 +143,6 @@ public class DiscountCalculatorUtility {
     		e.printStackTrace();
     	}
         return discount;
-    }
-
-    public BigDecimal calculateDiscount(BigDecimal amount, BigDecimal discount) {
-
-    	BigDecimal amt = new BigDecimal(0);
-    	
-    	try {
-    		
-            BigDecimal x = amount.multiply(discount);
-            amt = amount.subtract(x);
-            
-    	}catch(Exception e) {
-    		e.printStackTrace();
-    	}
-        return amt;
     }
 
 }

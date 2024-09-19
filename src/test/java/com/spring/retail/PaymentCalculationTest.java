@@ -12,12 +12,12 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.spring.retail.pojo.Bill;
-import com.spring.retail.pojo.Item;
-import com.spring.retail.pojo.ItemCategory;
+import com.spring.retail.pojo.Product;
+import com.spring.retail.pojo.ProductCategory;
 import com.spring.retail.pojo.User;
 import com.spring.retail.pojo.UserCategory;
-import com.spring.retail.service.CalculateDiscountService;
-import com.spring.retail.service.CalculateDiscountServiceImpl;
+import com.spring.retail.service.DiscountService;
+import com.spring.retail.service.ProductWiseDiscountService;
 import com.spring.retail.util.DiscountCalculatorUtility;
 
 public class PaymentCalculationTest {
@@ -29,18 +29,18 @@ public class PaymentCalculationTest {
 		LocalDate date = LocalDate.now();
 		User user = new User("2", "Ravi Sharma", UserCategory.CUSTOMER, date);
 
-		List<Item> items = new ArrayList<Item>();
+		List<Product> items = new ArrayList<Product>();
 
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.APPARELS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.ELECTRONICS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.STATIONERY, new BigDecimal(100.0)));
+		items.add(new Product(null, new BigDecimal(100.0),"Biscuits"));
+		items.add(new Product(null, new BigDecimal(100.0),"Toothpaste"));
+		items.add(new Product(null, new BigDecimal(100.0),"Jeans"));
+		items.add(new Product(null, new BigDecimal(100.0),"Mobile"));
+		items.add(new Product(null, new BigDecimal(100.0),"Pen"));
 
 		Bill bill = new Bill();
-		bill.setItems(items);
+		bill.setProducts(items);
 
-		CalculateDiscountService discountService = new CalculateDiscountServiceImpl();
+		DiscountService discountService = new ProductWiseDiscountService();
 		BigDecimal amount = discountService.getPayableAmount(user, bill);
 
 		assertEquals(475, amount.doubleValue(), 0);
@@ -54,18 +54,18 @@ public class PaymentCalculationTest {
 		LocalDate date = LocalDate.now();
 		User user = new User("2", "Ravi Sharma", UserCategory.CUSTOMER, date);
 
-		List<Item> items = new ArrayList<Item>();
+		List<Product> items = new ArrayList<Product>();
 
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.APPARELS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.ELECTRONICS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.STATIONERY, new BigDecimal(100.0)));
+		items.add(new Product(null, new BigDecimal(100.0),"Biscuits"));
+		items.add(new Product(null, new BigDecimal(100.0),"Toothpaste"));
+		items.add(new Product(null, new BigDecimal(100.0),"Jeans"));
+		items.add(new Product(null, new BigDecimal(100.0),"Mobile"));
+		items.add(new Product(null, new BigDecimal(100.0),"Pen"));
 
 		Bill bill = new Bill();
-		bill.setItems(items);
+		bill.setProducts(items);
 
-		CalculateDiscountService discountService = new CalculateDiscountServiceImpl();
+		DiscountService discountService = new ProductWiseDiscountService();
 		BigDecimal amount = discountService.getPayableAmount(user, bill);
 
 		assertNotEquals(25, amount.doubleValue(), 0);
@@ -78,18 +78,18 @@ public class PaymentCalculationTest {
 		LocalDate date = LocalDate.now();
 		User user = new User("1", "Supriyo Sarma", UserCategory.EMPLOYEE, date);
 
-		List<Item> items = new ArrayList<Item>();
+		List<Product> items = new ArrayList<Product>();
 
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.APPARELS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.ELECTRONICS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.STATIONERY, new BigDecimal(100.0)));
+		items.add(new Product(null, new BigDecimal(100.0),"Biscuits"));
+		items.add(new Product(null, new BigDecimal(100.0),"Toothpaste"));
+		items.add(new Product(null, new BigDecimal(100.0),"Jeans"));
+		items.add(new Product(null, new BigDecimal(100.0),"Mobile"));
+		items.add(new Product(null, new BigDecimal(100.0),"Pen"));
 
 		Bill bill = new Bill();
-		bill.setItems(items);
+		bill.setProducts(items);
 
-		CalculateDiscountService discountService = new CalculateDiscountServiceImpl();
+		DiscountService discountService = new ProductWiseDiscountService();
 		BigDecimal amount = discountService.getPayableAmount(user, bill);
 
 		assertEquals(385, amount.doubleValue(), 0);
@@ -98,13 +98,13 @@ public class PaymentCalculationTest {
 	@Test
 	public void testCalculate_AllTotal() {
 
-		List<Item> items = new ArrayList<Item>();
-
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.APPARELS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.ELECTRONICS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.STATIONERY, new BigDecimal(100.0)));
+		List<Product> items = new ArrayList<Product>();
+		
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Biscuits"));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Toothpaste"));
+		items.add(new Product(ProductCategory.APPARELS, new BigDecimal(100.0),"Jeans"));
+		items.add(new Product(ProductCategory.ELECTRONICS, new BigDecimal(100.0),"Mobile"));
+		items.add(new Product(ProductCategory.STATIONERY, new BigDecimal(100.0),"Pen"));
 
 		DiscountCalculatorUtility helper = new DiscountCalculatorUtility();
 		BigDecimal total = helper.calculateTotal(items);
@@ -115,13 +115,13 @@ public class PaymentCalculationTest {
 	@Test
 	public void testCalculate_AllTotalNotEquals() {
 
-		List<Item> items = new ArrayList<Item>();
+		List<Product> items = new ArrayList<Product>();
 
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.APPARELS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.ELECTRONICS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.STATIONERY, new BigDecimal(100.0)));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Biscuits"));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Toothpaste"));
+		items.add(new Product(ProductCategory.APPARELS, new BigDecimal(100.0),"Jeans"));
+		items.add(new Product(ProductCategory.ELECTRONICS, new BigDecimal(100.0),"Mobile"));
+		items.add(new Product(ProductCategory.STATIONERY, new BigDecimal(100.0),"Pen"));
 
 		DiscountCalculatorUtility helper = new DiscountCalculatorUtility();
 		BigDecimal total = helper.calculateTotal(items);
@@ -132,16 +132,16 @@ public class PaymentCalculationTest {
 	@Test
 	public void testCalculate_GroceriesTotal() {
 
-		List<Item> items = new ArrayList<Item>();
+		List<Product> items = new ArrayList<Product>();
 
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.APPARELS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.ELECTRONICS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.STATIONERY, new BigDecimal(100.0)));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Biscuits"));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Toothpaste"));
+		items.add(new Product(ProductCategory.APPARELS, new BigDecimal(100.0),"Jeans"));
+		items.add(new Product(ProductCategory.ELECTRONICS, new BigDecimal(100.0),"Mobile"));
+		items.add(new Product(ProductCategory.STATIONERY, new BigDecimal(100.0),"Pen"));
 
 		DiscountCalculatorUtility helper = new DiscountCalculatorUtility();
-		BigDecimal total = helper.calculateTotalByType(items, ItemCategory.GROCERY);
+		BigDecimal total = helper.calculateTotalByType(items, ProductCategory.GROCERY);
 
 		assertEquals(200.00, total.doubleValue(), 0);
 	}
@@ -149,16 +149,16 @@ public class PaymentCalculationTest {
 	@Test
 	public void testCalculate_CalculateNonGroceryItemWise() {
 
-		List<Item> items = new ArrayList<Item>();
+		List<Product> items = new ArrayList<Product>();
 
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.APPARELS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.ELECTRONICS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.STATIONERY, new BigDecimal(100.0)));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Biscuits"));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Toothpaste"));
+		items.add(new Product(ProductCategory.APPARELS, new BigDecimal(100.0),"Jeans"));
+		items.add(new Product(ProductCategory.ELECTRONICS, new BigDecimal(100.0),"Mobile"));
+		items.add(new Product(ProductCategory.STATIONERY, new BigDecimal(100.0),"Pen"));
 
 		DiscountCalculatorUtility helper = new DiscountCalculatorUtility();
-		BigDecimal total = helper.calculateTotalByType(items, ItemCategory.APPARELS);
+		BigDecimal total = helper.calculateTotalByType(items, ProductCategory.APPARELS);
 
 		assertEquals(100.00, total.doubleValue(), 0);
 	}
@@ -166,16 +166,16 @@ public class PaymentCalculationTest {
 	@Test
 	public void testCalculate_CalculateNonGroceryNotEquals() {
 
-		List<Item> items = new ArrayList<Item>();
+		List<Product> items = new ArrayList<Product>();
 
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.GROCERY, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.APPARELS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.ELECTRONICS, new BigDecimal(100.0)));
-		items.add(new Item(ItemCategory.STATIONERY, new BigDecimal(100.0)));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Biscuits"));
+		items.add(new Product(ProductCategory.GROCERY, new BigDecimal(100.0),"Toothpaste"));
+		items.add(new Product(ProductCategory.APPARELS, new BigDecimal(100.0),"Jeans"));
+		items.add(new Product(ProductCategory.ELECTRONICS, new BigDecimal(100.0),"Mobile"));
+		items.add(new Product(ProductCategory.STATIONERY, new BigDecimal(100.0),"Pen"));
 
 		DiscountCalculatorUtility helper = new DiscountCalculatorUtility();
-		BigDecimal total = helper.calculateTotalByType(items, ItemCategory.APPARELS);
+		BigDecimal total = helper.calculateTotalByType(items, ProductCategory.APPARELS);
 
 		assertNotEquals(200.00, total.doubleValue(), 0);
 	}
