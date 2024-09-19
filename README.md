@@ -6,9 +6,9 @@ DiscountCalculatorUtility - The getPayableAmount method internally calls the uti
 Calculate total amount - call calculateTotal method of utility class.
 Calculate grocery total - call calculateTotalByType of utiltiy class.
 Calculate non grocery total - subtract grocery total from total.
-Get user based discount percentage (employee. affiliate etc) - call getUserDiscount of utility class.
-Calculate bill based discount amount - call calculateBillDiscount method of utility class with the right parameters
+Get user based discount percentage (employee. affiliate etc) for calculating bill based discount amount - call getUserDiscount of utility class.
 Revise non grocery final amount - call calculateDiscount method of utility class with right parameters.
+Calculate bill based discount amount - call calculateBillDiscount method of utility class with the right parameters (total amount, discount per amt, discount amt)
 Arrive at final amount - Add grocery amount to revised grocery amount and subtract bill based discount from that.
 Return the final amount.
 Pojo classes used------ 
