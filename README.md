@@ -55,6 +55,7 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 
 1) To run JUnit tests from eclipse or STS, right click on the test class and run as JUnit test.
 2) To run JUnit tests from command line run the command mvn test.
+3) The JUnit view will show the results (passed/failed tests).
 
 **Solution Approach**
 ---------------------
