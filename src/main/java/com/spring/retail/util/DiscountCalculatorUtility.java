@@ -14,9 +14,10 @@ import com.spring.retail.pojo.Product;
 import com.spring.retail.pojo.ProductCategory;
 import com.spring.retail.pojo.User;
 import com.spring.retail.pojo.UserCategory;
-import com.spring.retail.service.ProductWiseDiscountService;
 
-
+/**
+ * Utility class for carrying out various calculations related to applying discounts.
+ */
 public class DiscountCalculatorUtility {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DiscountCalculatorUtility.class);
@@ -111,6 +112,9 @@ public class DiscountCalculatorUtility {
         return discount;
     }
 
+    /**
+     * method to check whether a customer is older than a given number of years
+     */
     public boolean isCustomerSince(LocalDate registeredDate, long years) {
     	
     	String methodName = "isCustomerSince";
@@ -130,7 +134,9 @@ public class DiscountCalculatorUtility {
     	return isCustomer;
     }
     
-    
+    /**
+     * method to calculate the discount based on a given percentage
+     */
     public BigDecimal calculateDiscount(BigDecimal amount, BigDecimal discountPercentage) {
     	
     	String methodName = "calculateDiscount";
@@ -149,7 +155,9 @@ public class DiscountCalculatorUtility {
         return amt;
     }
     
-
+    /**
+     * method to calculate the bill discount based on total amount
+     */
     public BigDecimal calculateBillDiscount(BigDecimal totalAmount, BigDecimal amount, BigDecimal discountAmount) {
     	
     	String methodName = "calculateBillDiscount";
@@ -169,6 +177,9 @@ public class DiscountCalculatorUtility {
         return discount;
     }
     
+    /**
+     * method to fetch product category for each product
+     */
     public List<Product> getUpdatedproductList(List<Product> products){
     	
     	String methodName = "getUpdatedproductList";

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.retail.dto.CalculatePaymentRequest;
 import com.spring.retail.service.DiscountService;
 
-
+/**
+ * Rest API class consisting of API for getting the final payment amount after applying discounts.
+ */
 @RestController
 @RequestMapping("api/v1/payments")
 public class CalculatePaymentController {
@@ -28,6 +30,9 @@ public class CalculatePaymentController {
 		this.discountService = discountService;
 	}
 	
+	/**
+	 * REST API method for getting the final payment amount after applying discounts.
+	 */
 	@PostMapping("/discountedPayment")
 	public BigDecimal fetchPayableAmount(@RequestBody CalculatePaymentRequest request) {
 		

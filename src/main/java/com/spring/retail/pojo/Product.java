@@ -2,6 +2,9 @@ package com.spring.retail.pojo;
 
 import java.math.BigDecimal;
 
+/**
+ * POJO class for Product details.
+ */
 public class Product {
 	
 	private ProductCategory productCategory;

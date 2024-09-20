@@ -20,8 +20,14 @@ import com.spring.retail.service.DiscountService;
 import com.spring.retail.service.ProductWiseDiscountService;
 import com.spring.retail.util.DiscountCalculatorUtility;
 
+/**
+ * JUnit test class consisting of unit tests for testing the retail discount calculator.
+ */
 public class PaymentCalculationTest {
 	
+	/**
+	 * Check total payable amount case 1 - true case.
+	 */
 	@Test
 	public void testCalculate_PayableAmount_1() {
 
@@ -47,6 +53,9 @@ public class PaymentCalculationTest {
 	}
 
 
+	/**
+	 * Check total payable amount case 2 - false case.
+	 */
 	@Test
 	public void testCalculate_PayableAmount_2() {
 
@@ -71,6 +80,9 @@ public class PaymentCalculationTest {
 		assertNotEquals(25, amount.doubleValue(), 0);
 	}
 	
+	/**
+	 * Check total payable amount case 3 - true case.
+	 */
 	@Test
 	public void testCalculate_PayableAmount_3() {
 
@@ -95,6 +107,9 @@ public class PaymentCalculationTest {
 		assertEquals(385, amount.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method all total amount.
+	 */
 	@Test
 	public void testCalculate_AllTotal() {
 
@@ -112,6 +127,9 @@ public class PaymentCalculationTest {
 		assertEquals(500.00, total.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method all total amount - false case.
+	 */
 	@Test
 	public void testCalculate_AllTotalNotEquals() {
 
@@ -129,6 +147,9 @@ public class PaymentCalculationTest {
 		assertNotEquals(300.00, total.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method for category wise total, Grocery used here.
+	 */
 	@Test
 	public void testCalculate_GroceriesTotal() {
 
@@ -146,6 +167,10 @@ public class PaymentCalculationTest {
 		assertEquals(200.00, total.doubleValue(), 0);
 	}
 
+	
+	/**
+	 * Check utility method for category wise total, Apparels used here.
+	 */
 	@Test
 	public void testCalculate_CalculateNonGroceryItemWise() {
 
@@ -163,6 +188,9 @@ public class PaymentCalculationTest {
 		assertEquals(100.00, total.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method for category wise total, false case for Apparels.
+	 */
 	@Test
 	public void testCalculate_CalculateNonGroceryNotEquals() {
 
@@ -180,6 +208,9 @@ public class PaymentCalculationTest {
 		assertNotEquals(200.00, total.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method for fetching user based discount percentage case 1.
+	 */
 	@Test
 	public void testGetUserDiscount_Employee() {
 
@@ -191,6 +222,9 @@ public class PaymentCalculationTest {
 		assertEquals(0.3, discount.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method for fetching user based discount percentage case 2.
+	 */
 	@Test
 	public void testGetUserDiscount_Affiliate() {
 
@@ -202,7 +236,9 @@ public class PaymentCalculationTest {
 		assertEquals(0.1, discount.doubleValue(), 0);
 	}
 
-
+	/**
+	 * Check utility method for fetching user based discount percentage case 3.
+	 */
 	@Test
 	public void testGetUserSpecificDiscount_applicableCustomer() {
 
@@ -215,6 +251,9 @@ public class PaymentCalculationTest {
 		assertEquals(0.05, discount.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method for fetching user based discount percentage case 4.
+	 */
 	@Test
 	public void testGetUserSpecificDiscount_NonApplicableCustomer() {
 
@@ -227,6 +266,9 @@ public class PaymentCalculationTest {
 		assertEquals(0.0, discount.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method for fetching if an user is a customer since a particular period.
+	 */
 	@Test
 	public void testIsCustomerSince() {
 
@@ -238,6 +280,9 @@ public class PaymentCalculationTest {
 		assertFalse(isTwoYearsJoined);
 	}
 
+	/**
+	 * Check utility method for calculating bill based discount case 1.
+	 */
 	@Test
 	public void testCalculateBillsDiscount_1() {
 
@@ -248,6 +293,9 @@ public class PaymentCalculationTest {
 		assertEquals(250, amount.doubleValue(), 0);
 	}
 
+	/**
+	 * Check utility method for calculating bill based discount case 2.
+	 */
 	@Test
 	public void testCalculateBillsDiscount_2() {
 

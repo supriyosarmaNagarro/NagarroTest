@@ -2,7 +2,9 @@ package com.spring.retail.pojo;
 
 import java.time.LocalDate;
 
-
+/**
+ * POJO class for User details.
+ */
 public class User {
 	
 	private String userId;

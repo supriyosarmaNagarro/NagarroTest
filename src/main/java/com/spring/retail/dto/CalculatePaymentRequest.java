@@ -3,6 +3,9 @@ package com.spring.retail.dto;
 import com.spring.retail.pojo.Bill;
 import com.spring.retail.pojo.User;
 
+/**
+ * Payment request DTO class.
+ */
 public class CalculatePaymentRequest {
 	
 	private User user;

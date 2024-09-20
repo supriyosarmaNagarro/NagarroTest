@@ -2,6 +2,9 @@ package com.spring.retail.pojo;
 
 import java.util.List;
 
+/**
+ * POJO class for Bill details.
+ */
 public class Bill {
 	
 	private List<Product> products;

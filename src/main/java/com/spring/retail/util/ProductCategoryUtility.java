@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import com.spring.retail.pojo.ProductCategory;
 
+/**
+ * Utility class for storing product categories against individual products.
+ */
 public class ProductCategoryUtility {
 	
 	private HashMap<String, ProductCategory> productAndCategory;
