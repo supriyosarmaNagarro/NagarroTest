@@ -1,8 +1,10 @@
 **Project**
+-------------
 
 This repository contains the Spring Boot based project for calculating the discounts on a retail website based on a set of given conditions.
 
 **Project Description**
+-----------------------
 
 On a retail website, the following discounts apply:
 1.	If the user is an employee of the store, he gets a 30% discount
@@ -15,8 +17,10 @@ On a retail website, the following discounts apply:
 Write a program in a Java – Spring boot with test cases such that given a bill, it finds the net payable amount.
 
 **Getting Started**
+--------------------
 
 **Prerequisites**
+-------------------
 
 1) Spring Tools Suite or eclipse
 2) Maven
@@ -24,6 +28,7 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 4) Knowledge of Core Java and Spring Boot
 
 **Technologies Used**
+---------------------
 
 1) Spring Boot
 2) Core Java
@@ -31,6 +36,7 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 4) JUnit
 
 **How to run the project**
+---------------------------
 
 1) To run JUnit tests from eclipse or STS, right click on the test class and run as JUnit test.
 2) To run JUnit tests from command line run the command mvn test.
@@ -38,6 +44,7 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 4) To run as a Java application from command line, use any option mvn package or mvn install.
 
 **Solution Approach**
+---------------------
 
 1) Obtain the problem statement and requirements. Details given above in the project description section.
 2) Setup the environment using the tools and technologies mentioned abobe in the Prerequisites and Technologies Used section.
@@ -52,6 +59,7 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 11) For production, implement cross cutting concerns like Logging, exception handling etc.
 
 **Project Structure**
+----------------------
 
 ├───.mvn
 │   └───wrapper
