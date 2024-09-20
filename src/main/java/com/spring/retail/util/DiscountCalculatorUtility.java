@@ -7,13 +7,20 @@ import java.time.Period;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.spring.retail.pojo.Product;
 import com.spring.retail.pojo.ProductCategory;
 import com.spring.retail.pojo.User;
 import com.spring.retail.pojo.UserCategory;
+import com.spring.retail.service.ProductWiseDiscountService;
 
 
 public class DiscountCalculatorUtility {
+	
+	private static final Logger logger = LoggerFactory.getLogger(DiscountCalculatorUtility.class);
+	private static final String classname = DiscountCalculatorUtility.class.getName();
 	
 	private static final int YEARS_FOR_DISCOUNT = 2;
 
@@ -27,6 +34,9 @@ public class DiscountCalculatorUtility {
      */
     public BigDecimal calculateTotal(List<Product> items) {
     	
+    	String methodName = "calculateTotal";
+		logger.info("Inside class - "+classname+", method - "+methodName);
+    	
     	BigDecimal amount = new BigDecimal(0);
     	
     	try {
@@ -34,8 +44,7 @@ public class DiscountCalculatorUtility {
     		amount = items.stream().map(i -> i.getPrice()).reduce(BigDecimal.ZERO, BigDecimal::add);
     	
     	}catch(Exception e) {
-    		
-    		e.printStackTrace();
+    		logger.error(e.getMessage());
     	}
     	return amount;
     }
@@ -44,6 +53,9 @@ public class DiscountCalculatorUtility {
      * method to calculate the total amount by using item type
      */
     public BigDecimal calculateTotalByType(List<Product> items, ProductCategory type) {
+    	
+    	String methodName = "calculateTotalByType";
+		logger.info("Inside class - "+classname+", method - "+methodName);
         
     	BigDecimal sum = new BigDecimal(0);
 
@@ -56,7 +68,7 @@ public class DiscountCalculatorUtility {
             }
             
     	}catch(Exception e) {
-    		e.printStackTrace();
+    		logger.error(e.getMessage());
     	}
 
         return sum;
@@ -67,6 +79,9 @@ public class DiscountCalculatorUtility {
      * method to get the user wise discount percentage
      */
     public BigDecimal getUserDiscount(User user) {
+    	
+    	String methodName = "getUserDiscount";
+		logger.info("Inside class - "+classname+", method - "+methodName);
 
         BigDecimal discount = new BigDecimal(0);
         
@@ -90,14 +105,16 @@ public class DiscountCalculatorUtility {
         	}
         		
         }catch(Exception e) {
-        	
-        	e.printStackTrace();
+        	logger.error(e.getMessage());
         }
         
         return discount;
     }
 
     public boolean isCustomerSince(LocalDate registeredDate, long years) {
+    	
+    	String methodName = "isCustomerSince";
+		logger.info("Inside class - "+classname+", method - "+methodName);
     	
     	boolean isCustomer = false;
     	
@@ -107,7 +124,7 @@ public class DiscountCalculatorUtility {
             isCustomer = period.getYears() >= years;
             
     	}catch(Exception e) {
-    		e.printStackTrace();
+    		logger.error(e.getMessage());
     	}
 
     	return isCustomer;
@@ -115,6 +132,9 @@ public class DiscountCalculatorUtility {
     
     
     public BigDecimal calculateDiscount(BigDecimal amount, BigDecimal discountPercentage) {
+    	
+    	String methodName = "calculateDiscount";
+		logger.info("Inside class - "+classname+", method - "+methodName);
 
     	BigDecimal amt = new BigDecimal(0);
     	
@@ -124,13 +144,16 @@ public class DiscountCalculatorUtility {
             amt = amount.subtract(discount);
             
     	}catch(Exception e) {
-    		e.printStackTrace();
+    		logger.error(e.getMessage());
     	}
         return amt;
     }
     
 
     public BigDecimal calculateBillDiscount(BigDecimal totalAmount, BigDecimal amount, BigDecimal discountAmount) {
+    	
+    	String methodName = "calculateBillDiscount";
+		logger.info("Inside class - "+classname+", method - "+methodName);
     	
     	int roundedvalue = 0;
     	BigDecimal discount = new BigDecimal(0);
@@ -141,12 +164,15 @@ public class DiscountCalculatorUtility {
     		discount = discountAmount.multiply(new BigDecimal(roundedvalue));
             
     	}catch(Exception e) {
-    		e.printStackTrace();
+    		logger.error(e.getMessage());
     	}
         return discount;
     }
     
     public List<Product> getUpdatedproductList(List<Product> products){
+    	
+    	String methodName = "getUpdatedproductList";
+		logger.info("Inside class - "+classname+", method - "+methodName);
     	
     	return products.stream().map(p -> {
 			ProductCategoryUtility productCategories = new ProductCategoryUtility();

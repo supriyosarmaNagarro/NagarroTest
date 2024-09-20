@@ -3,8 +3,11 @@ package com.spring.retail.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.spring.retail.controller.CalculatePaymentController;
 import com.spring.retail.pojo.Bill;
 import com.spring.retail.pojo.Product;
 import com.spring.retail.pojo.ProductCategory;
@@ -14,9 +17,15 @@ import com.spring.retail.util.DiscountCalculatorUtility;
 
 @Service
 public class ProductWiseDiscountService implements DiscountService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(ProductWiseDiscountService.class);
+	private static final String classname = ProductWiseDiscountService.class.getName();
 
 	@Override
 	public BigDecimal getPayableAmount(User user, Bill bill) {
+		
+		String methodName = "getPayableAmount";
+		logger.info("Inside class - "+classname+", method - "+methodName);
 		
 			DiscountCalculatorUtility utility = new DiscountCalculatorUtility();
 			
@@ -53,7 +62,7 @@ public class ProductWiseDiscountService implements DiscountService {
 				
 			}catch(Exception e) {
 				
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 			return finalAmount;
 	}
