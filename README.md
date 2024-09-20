@@ -38,18 +38,23 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 **How to clone the project**
 ---------------------------
 
-1) In Github code section 
-2) To run JUnit tests from command line run the command mvn test.
-3) To run as a Java application from eclipse or STS, right click on the test class and run as Java or Spring Boot Application.
-4) To run as a Java application from command line, use any option mvn package or mvn install.
+1) Go to Code section of the Github project and click on the Code drop down button.
+2) Copy the https url from the HTTPS section of the code drop down button.
+3) In eclipse or STS IDE, Goto GIT perspective and click on clone a GIT repository option.
+4) In the next pop-up window enter the URL copied from GIT. Enter the username and password and click on Next button.
+5) In the next window, select the branch and again click on Next option. Next select the directory where you want to clone the project and click on Finish.
 
 **How to run the project**
 ---------------------------
 
+1) To run the project as a Spring Boot app or a Java application from eclipse or STS, right click on the test class and run as Java or Spring Boot Application.
+2) To run as a Java application from command line, use any of the options - mvn package or mvn install.
+
+**How to generate the test report**
+------------------------------------
+
 1) To run JUnit tests from eclipse or STS, right click on the test class and run as JUnit test.
 2) To run JUnit tests from command line run the command mvn test.
-3) To run as a Java application from eclipse or STS, right click on the test class and run as Java or Spring Boot Application.
-4) To run as a Java application from command line, use any option mvn package or mvn install.
 
 **Solution Approach**
 ---------------------
@@ -60,11 +65,26 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 4) Create a RestController that will consist of the API method fetchPayableAmount which returns the final payable amount after calculating discounts.
 5) Define a DTO class for receiving the payment request with parameters such as bill and user type.
 6) Create a service class. The controller calls the service method getPayableAmount in the service class to fetch the final payable amount after calculating discounts. Design the service and implementing classes keeping in mind the strategy design pattern for future purposes.
-7) For example - If there are 5 items - Biscuits, Toothpaste, Jeans, Mobile, Pen. Here is how it will be calculated.
+7) For example - Considering a list of items, here is how it will be calculated.
 8) Get the product categories for each item from the utility class ProductCategoryWise. For this use the updatedProductsList method in the utility class. Most of the complex calculation logic is hidden from the service class. This is attributable to the use of Facade design pattern.
 9) After that the getPayableAmount method internally calls the utility methods defined in the utility class DiscountCalculatorUtility to carry out operations such as calculating the total amount, grocery based amount, non grocery based amount, user based discounts, bill based discounts etc.
 10) Use Spring bean annotations such as @RestController, @Service etc for automatic maintenance of beans by Spring IOC container.
 11) For production, implement cross cutting concerns like Logging, exception handling etc.
+
+**Sample scenario**
+----------------------
+
+1)  Total items - 5 || List of items - Biscuits (GROCERY), Toothpaste (GROCERY), Jeans (APPAREL), Mobile (ELECTRONICS), Pen (STATIONARY) with each costing 100$ || Total cost - 500$ || User Name - Supriyo Sarma || User type - CUSTOMER || Customer registration date - 19-SEP-2024.
+2) An API request consisting of the list of products and their initial billable amount will be sent to the /discountedPayment API in CalculatePaymentController to generate the final payable amount. The product category won't be sent by the client.
+3) The API method will call the getPayableAmount method in the service class ProductWiseDiscountService. This method will initially fetch the item wise product category from an utility class ProductCategoryUtility. After that the calculation will proceed as given below.
+4) Calculate overall total amount using calculateTotal method in utility class which will come out to be 500$.
+5) Calculate grocery total amount using calculateTotalByType method in utility class which will come out to be 200$.
+6) Calculate non grocery total by subtracting grocery amount from total amount which will come out to be 300$.
+7) Fetch the user based discount percentage from getUserDiscount method in utility class which will get the value 0 as customer is not more than 2 years old.
+8) Calculate non grocery final amount from total amount using calculateDiscount method in utility class. Pass non grocery total and user based discount percentage as values. In this case, it will remain as 300.
+9) Calculate bill based discount using the method calculateBillDiscount in utility class which will come out to be 25$ considering total 500$ bill.
+10) Final amount is arrived at by subtracting the bill based discount from the sum of grocery total (step 5) and non grocery final amount (step 8). This will come out to be ((200+300) - 25) = 475$.
+ 
 
 **Project Structure**
 ----------------------
