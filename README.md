@@ -90,6 +90,9 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 **Project Structure**
 ----------------------
 
+![image](https://github.com/user-attachments/assets/ab26ff28-2a36-490b-95e4-f9d72b6eb0ed)
+
+
 ├───.mvn
 │   └───wrapper
 ├───.settings
