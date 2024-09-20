@@ -35,6 +35,14 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 3) Java 8
 4) JUnit
 
+**How to clone the project**
+---------------------------
+
+1) In Github code section 
+2) To run JUnit tests from command line run the command mvn test.
+3) To run as a Java application from eclipse or STS, right click on the test class and run as Java or Spring Boot Application.
+4) To run as a Java application from command line, use any option mvn package or mvn install.
+
 **How to run the project**
 ---------------------------
 
