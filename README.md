@@ -100,10 +100,6 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 │   │   │       └───spring
 │   │   │           └───retail
 │   │   │               ├───controller
-    │       └───maven
-    │           └───com.spring.retail
-    │               └───spring-retail-project
-    ├───generated-sources
     │   └───annotations
     ├───generated-test-sources
     │   └───test-annotations
@@ -117,3 +113,19 @@ Write a program in a Java – Spring boot with test cases such that given a bill
         └───com
             └───spring
                 └───retail
+                
+**Src Java Package Structure**
+------------------------------
+
+├───controller
+├───dto
+├───pojo
+├───service
+└───util
+
+**Src Test Structure**
+------------------------------
+
+com
+   └───spring
+        └───retail
