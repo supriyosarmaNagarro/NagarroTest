@@ -91,44 +91,13 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 ----------------------
 
 ![image](https://github.com/user-attachments/assets/ab26ff28-2a36-490b-95e4-f9d72b6eb0ed)
-
-
-├───.mvn
-│   └───wrapper
-├───.settings
-├───src
-│   ├───main
-│   │   ├───java
-│   │   │   └───com
-│   │   │       └───spring
-│   │   │           └───retail
-│   │   │               ├───controller
-    │   └───annotations
-    ├───generated-test-sources
-    │   └───test-annotations
-    ├───maven-status
-    │   └───maven-compiler-plugin
-    │       ├───compile
-    │       │   └───default-compile
-    │       └───testCompile
-    │           └───default-testCompile
-    └───test-classes
-        └───com
-            └───spring
-                └───retail
                 
 **Src Java Package Structure**
 ------------------------------
 
-├───controller
-├───dto
-├───pojo
-├───service
-└───util
+![image](https://github.com/user-attachments/assets/bcfd61c6-4b98-4e73-846f-5beea3c07253)
 
 **Src Test Structure**
 ------------------------------
 
-com
-   └───spring
-        └───retail
+![image](https://github.com/user-attachments/assets/fb5efa84-7870-4b09-99d7-89c8fcadefc6)
