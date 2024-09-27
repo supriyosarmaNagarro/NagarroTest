@@ -57,6 +57,14 @@ Write a program in a Java – Spring boot with test cases such that given a bill
 2) To run JUnit tests from command line run the command mvn test.
 3) The JUnit view will show the results (passed/failed tests).
 
+**UML diagram**
+----------------
+
+![image](https://github.com/user-attachments/assets/23721f1a-0df6-4242-9934-8bfcd1a4b58b)
+
+![image](https://github.com/user-attachments/assets/4f2e70ce-d4eb-446b-a0c9-bd9310c3c8ba)
+
+
 **Solution Approach**
 ---------------------
 
